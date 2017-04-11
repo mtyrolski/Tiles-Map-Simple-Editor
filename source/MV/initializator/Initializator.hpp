@@ -1,6 +1,5 @@
 #pragma once
 
-#include "MV/stateSystem/StateSystem.hpp"
 #include "MV/config/Config.hpp"
 #include "MV/resourceCache/Cache.hpp"
 #include "MV/mapManager/MapManager.hpp"
@@ -36,5 +35,8 @@ namespace mv
 		Initializator() = default;
 		Initializator(Initializator const& copy) = delete;            // Not Implemented
 		Initializator& operator=(Initializator const& copy) = delete; // Not Implemented
+
+		void initObjects();
+		void loadPropeties();
 	};
 }
