@@ -9,6 +9,8 @@ namespace mv
 
 	void Cell::setBasicParameters(int stateNumber, sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
 	{
+		object.setTexture(mv::TypesManager::getInstance().textureAtlasCache.get("data/textures/atlas.png"));
+
 		if (!TypesManager::getInstance().isTypeExist(stateNumber))
 		{
 			Logger::Log(constants::error::stateSystem::STATE_DOES_NOT_EXIST, Logger::STREAM::BOTH, Logger::TYPE::ERROR);
@@ -17,34 +19,15 @@ namespace mv
 		else
 		{
 			state = stateNumber;
+			auto cellDimensions = Loader::getInstance().cellDimensions;
+			object.setTextureRect(sf::IntRect(state*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
 		}
 	}
-
-	/*void Cell::setBasicParameters(const std::string& name, sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
-	{
-		if (!StateSystem::isStateExist(name))
-		{
-			Logger::Log(constants::error::stateSystem::STATE_DOES_NOT_EXIST, Logger::STREAM::BOTH, Logger::TYPE::ERROR);
-			state = StateSystem::getNumberOfState(constants::defaults::EMPTY);
-		}
-		else
-		{
-			state = StateSystem::getNumberOfState(name);
-		}
-	}*/
 
 	void Cell::setVisualSettings(sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
 	{
 		object.setPosition(uPos.x*cellDimensions.x, uPos.y*cellDimensions.y);
 	}
-
-
-
-	/*Cell::Cell(sf::Vector2i& uPos, sf::Vector2f& cellDimensions, const std::string& stateName)
-		:unitPosition(uPos), lastClickTime(clock()),nextState(0)
-	{
-		setBasicParameters(stateName,cellDimensions,uPos);
-	}*/
 
 	Cell::Cell(sf::Vector2i & uPos, sf::Vector2f & cellDimensions, int stateNumber)
 		:unitPosition(uPos),lastClickTime(clock()), nextState(0)
@@ -78,6 +61,10 @@ namespace mv
 		if (TypesManager::getInstance().isTypeExist(stateNumber))
 		{
 			state = stateNumber;
+
+			auto cellDimensions = Loader::getInstance().cellDimensions;
+			object.setTextureRect(sf::IntRect(state*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
+
 			return true;
 		}
 		else Logger::Log(constants::error::stateSystem::NUMBER_HAS_NOT_FOUND,Logger::STREAM::BOTH,Logger::TYPE::ERROR);
@@ -88,5 +75,8 @@ namespace mv
 	void Cell::update()
 	{
 		state = nextState;
+
+		auto cellDimensions = Loader::getInstance().cellDimensions;
+		object.setTextureRect(sf::IntRect(state*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
 	}
 }
