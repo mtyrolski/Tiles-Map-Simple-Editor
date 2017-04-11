@@ -4,7 +4,7 @@ Tiles map editor based on MV-Engine
 
 <a href="url"><img src="http://i.imgur.com/woOVLhe.png" align="left" height="500" width="300" ></a>
 
-## 1. Insert your texture atlas into Editor/data/textures
+## 1. Replace your texture atlas with atlas.png (Editor/data/textures)
 .
 
 .
