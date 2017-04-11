@@ -93,4 +93,9 @@ namespace mv
 			lastActionTime = clock();
 		}
 	}
+
+	int Cell::getRotationState()
+	{
+		return object.getRotation() / 90;
+	}
 }

@@ -11,6 +11,7 @@ namespace mv
 		{
 			const sf::Color FILL_COLOR(120, 133, 139); //Squirrel grey
 			constexpr auto STRAIGHT_ANGLE = 90;
+			constexpr auto stateInterval = 4;
 		}
 
 		namespace logger

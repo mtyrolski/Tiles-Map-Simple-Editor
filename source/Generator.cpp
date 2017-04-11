@@ -25,7 +25,15 @@ void Generator::generate(const std::string & path)
 
 void Generator::generateWithRotation(const std::string & path)
 {
-	
+	std::ofstream output(path);
+
+	for (auto&var : *mv::MapManager::getInstance().getCellStorage())
+	{
+		output << var.getState()*mv::constants::cell::stateInterval + var.getRotationState() << " ";
+
+		if (var.getUnitPosition().x == mv::MapManager::getInstance().getUnitWorldSize().x - 1)
+			output << std::endl;
+	}
 }
 
 void Generator::generateWithoutRotation(const std::string & path)
