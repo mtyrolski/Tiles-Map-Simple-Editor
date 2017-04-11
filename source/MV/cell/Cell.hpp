@@ -55,6 +55,9 @@ namespace mv
 		//Updates cell state to next state
 		void update();;
 
+		//return position in unit system
+		const sf::Vector2i& getUnitPosition();
+
 	protected:
 	private:
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

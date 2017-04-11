@@ -13,7 +13,7 @@ namespace mv
 		if (!TypesManager::getInstance().isTypeExist(stateNumber))
 		{
 			Logger::Log(constants::error::stateSystem::STATE_DOES_NOT_EXIST, Logger::STREAM::BOTH, Logger::TYPE::ERROR);
-			state = 0; //empty in future
+			state = constants::defaults::DEFAULT_STATE_NUMBER;
 		}
 		else
 		{
@@ -77,5 +77,10 @@ namespace mv
 
 		auto cellDimensions = Loader::getInstance().cellDimensions;
 		object.setTextureRect(sf::IntRect(state*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
+	}
+
+	const sf::Vector2i & Cell::getUnitPosition()
+	{
+		return unitPosition;
 	}
 }

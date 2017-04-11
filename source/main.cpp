@@ -1,12 +1,15 @@
 #pragma once
 
 #include "MV/initializator/Initializator.hpp"
+#include "Generator.hpp"
+
 
 int main()
 {
 	mv::Initializator::createInstance();
 	mv::Initializator::getInstance().init();
 	
+
 	//main game loop
 	while (mv::Scene::getInstance().isOpen())
 	{
@@ -24,6 +27,8 @@ int main()
 		mv::EventControl::getInstance().checkEvent(event);
 	}
 
+	Generator generator(mv::Loader::getInstance().rotateMode);
+	generator.generate("output.txt");
 
 	return 0;
 }

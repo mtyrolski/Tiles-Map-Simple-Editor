@@ -22,6 +22,8 @@ namespace mv
 
 		sf::Vector2i UnitMapSize;
 
+		char rotateMode;
+
 	protected:
 	private:
 		static Loader* instance;

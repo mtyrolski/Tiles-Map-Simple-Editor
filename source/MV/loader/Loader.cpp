@@ -15,6 +15,7 @@ namespace mv
 			file >> Loader::cellDimensions.y;
 			file >> Loader::UnitMapSize.x;
 			file >> Loader::UnitMapSize.y;
+			file >> Loader::rotateMode;
 		}
 	}
 
