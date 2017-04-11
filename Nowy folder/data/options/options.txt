@@ -1,0 +1,4 @@
+TilesMapEditor
+25 25
+25 25
+1
