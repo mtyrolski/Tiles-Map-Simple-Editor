@@ -35,7 +35,8 @@ namespace mv
 	{
 		auto pos = mv::Math::convertToUnitPosition(mv::Mouse::getInstance().getPosition());
 
-		map[pos.y*unitWorldSize.x + pos.x].rotate();
+		if(isInMap(pos))
+			map[pos.y*unitWorldSize.x + pos.x].rotate();
 	}
 
 

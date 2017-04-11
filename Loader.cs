@@ -50,19 +50,20 @@ namespace Loader
         {
             try
             {
-                File.WriteAllText("Editor/data/options/options.txt", "TilesMapEditor" +
-                     Environment.NewLine + dimX.Text +' '+ dimY.Text +
-                     Environment.NewLine + unitWorldSizeX + ' ' + unitWorldSizeY+
-                     Environment.NewLine + (rotateBox.Enabled==true? '1' : '0'));
+                File.WriteAllText("data/options/options.txt", "TilesMapEditor" +
+                     Environment.NewLine + dimX.Text + ' ' + dimY.Text +
+                     Environment.NewLine + unitWorldSizeX.Text + ' ' + unitWorldSizeY.Text +
+                     Environment.NewLine + (rotateBox.Checked == true ? '1' : '0'));
 
                 var game = new System.Diagnostics.Process();
-                game.StartInfo.FileName = "Editor/MV-Engine.exe";
+                game.StartInfo.FileName = "MV-Engine.exe";
                 game.Start();
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred - please contact with author of project.");
+                
+                MessageBox.Show("An error occurred - please contact with author of project. /n " + ex.Message);
             }
         }
 

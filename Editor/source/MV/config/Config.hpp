@@ -25,6 +25,7 @@ namespace mv
 		namespace scene
 		{
 			constexpr auto ZOOM_SPEED = 0.05f;
+			const auto MINIMAL_DIMENSIONS = sf::Vector2f(600, 600);
 		}
 
 		namespace mouse

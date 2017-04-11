@@ -43,6 +43,10 @@ namespace mv
 	Scene::Scene(const std::string& title, const sf::Vector2f& dimensions)
 		:viewSpeed(2.f)
 	{
+		if (dimensions.x < constants::scene::MINIMAL_DIMENSIONS.x ||
+			dimensions.y < constants::scene::MINIMAL_DIMENSIONS.y)
+			window = new sf::RenderWindow(sf::VideoMode(constants::scene::MINIMAL_DIMENSIONS.x, constants::scene::MINIMAL_DIMENSIONS.y), title);
+		else
 		window = new sf::RenderWindow(sf::VideoMode(dimensions.x, dimensions.y), title);
 		
 		inputManager.addKeyToCheck(sf::Keyboard::A, []() { mv::Scene::getInstance().moveViewLeft(); });
