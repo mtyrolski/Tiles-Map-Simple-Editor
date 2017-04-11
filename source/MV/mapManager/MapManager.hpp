@@ -42,7 +42,7 @@ namespace mv
 		std::vector<Cell> *getCellStorage();
 
 		//Construct whole world with default state
-		bool constructWholeWorld(const std::string&defaultState);
+		bool constructWholeWorld(int defaultState = 0);
 
 		//Uptades cells (to next state)
 		void updateCells();

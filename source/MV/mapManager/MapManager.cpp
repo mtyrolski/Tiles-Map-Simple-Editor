@@ -61,18 +61,14 @@ namespace mv
 		return &map;
 	}
 
-	bool MapManager::constructWholeWorld(const std::string& defaultState)
+	bool MapManager::constructWholeWorld(int defaultState)
 	{
-		initialState = StateSystem::getNumberOfState(defaultState);
-
-		if (!StateSystem::isStateExist(initialState))
+		if (!TypesManager::getInstance().isTypeExist(defaultState))
 		{
 			Logger::Log(constants::error::stateSystem::NUMBER_HAS_NOT_FOUND, Logger::STREAM::BOTH, Logger::TYPE::ERROR);
 			return false;
 		}
-
-		MapManager::createWorld(initialState);
-
+		MapManager::createWorld(defaultState);
 	}
 
 	void MapManager::updateCells()

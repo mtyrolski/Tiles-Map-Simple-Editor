@@ -2,6 +2,8 @@
 
 namespace mv
 {
+	TypesManager* TypesManager::instance = nullptr;
+
 	TypesManager & TypesManager::getInstance()
 	{
 		if (instance == nullptr)
