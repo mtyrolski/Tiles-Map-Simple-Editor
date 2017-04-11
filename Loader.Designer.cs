@@ -38,8 +38,8 @@
             this.UnitWorldSizeLabel = new System.Windows.Forms.Label();
             this.authorPage = new System.Windows.Forms.LinkLabel();
             this.runButton = new System.Windows.Forms.Button();
-            this.helpButton = new System.Windows.Forms.Button();
             this.rotateBox = new System.Windows.Forms.CheckBox();
+            this.helpButton = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // dimX
@@ -115,7 +115,7 @@
             // authorPage
             // 
             this.authorPage.AutoSize = true;
-            this.authorPage.Location = new System.Drawing.Point(13, 237);
+            this.authorPage.Location = new System.Drawing.Point(12, 240);
             this.authorPage.Name = "authorPage";
             this.authorPage.Size = new System.Drawing.Size(90, 13);
             this.authorPage.TabIndex = 8;
@@ -133,16 +133,6 @@
             this.runButton.UseVisualStyleBackColor = true;
             this.runButton.Click += new System.EventHandler(this.runButton_Click);
             // 
-            // helpButton
-            // 
-            this.helpButton.Location = new System.Drawing.Point(109, 232);
-            this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(75, 23);
-            this.helpButton.TabIndex = 9;
-            this.helpButton.Text = "Help";
-            this.helpButton.UseVisualStyleBackColor = true;
-            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
-            // 
             // rotateBox
             // 
             this.rotateBox.AutoSize = true;
@@ -154,14 +144,25 @@
             this.rotateBox.Text = "Include rotation";
             this.rotateBox.UseVisualStyleBackColor = true;
             // 
+            // helpButton
+            // 
+            this.helpButton.AutoSize = true;
+            this.helpButton.Location = new System.Drawing.Point(122, 240);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(29, 13);
+            this.helpButton.TabIndex = 12;
+            this.helpButton.TabStop = true;
+            this.helpButton.Text = "Help";
+            this.helpButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.helpButton_LinkClicked);
+            // 
             // Loader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.rotateBox);
             this.Controls.Add(this.runButton);
-            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.authorPage);
             this.Controls.Add(this.UnitWorldSizeLabel);
             this.Controls.Add(this.CellDimLabel);
@@ -192,8 +193,8 @@
         private System.Windows.Forms.Label UnitWorldSizeLabel;
         private System.Windows.Forms.LinkLabel authorPage;
         private System.Windows.Forms.Button runButton;
-        private System.Windows.Forms.Button helpButton;
         private System.Windows.Forms.CheckBox rotateBox;
+        private System.Windows.Forms.LinkLabel helpButton;
     }
 }
 

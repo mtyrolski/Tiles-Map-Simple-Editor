@@ -67,9 +67,9 @@ namespace Loader
             }
         }
 
-        private void helpButton_Click(object sender, EventArgs e)
+        private void helpButton_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            System.Diagnostics.Process.Start("https://github.com/mvxxx/Tiles-Map-Simple-Editor");
         }
     }
 }

@@ -64,3 +64,8 @@ Temporary Items
 *.db
 *.db
 output.txt
+*.dll
+Debug/
+external/
+Release/
+x64/

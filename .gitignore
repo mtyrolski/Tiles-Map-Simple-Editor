@@ -4,4 +4,6 @@
 *.cache
 *.Cache
 *.cache
-obj/Debug/Loader.csproj.FileListAbsolute.txt
+obj/
+Propeties/
+bin/

@@ -28,7 +28,8 @@ namespace mv
 		MapManager::unitWorldSize = uWorldSize;
 		MapManager::cellDimensions = cellDim;
 
-		inputManager.addKeyToCheck(sf::Keyboard::E, []() { mv::MapManager::getInstance().rotateCell(); });
+		if(mv::Loader::getInstance().rotateMode=='1')
+			inputManager.addKeyToCheck(sf::Keyboard::E, []() { mv::MapManager::getInstance().rotateCell(); });
 	}
 
 	void MapManager::rotateCell()
