@@ -36,17 +36,17 @@ namespace mv
 
 	void Cell::changeState(int shift)
 	{
-		nextState = state + shift;
-		nextState %= TypesManager::getInstance().getAmmountOfTypes();
-	}
-
-	void Cell::changeState()
-	{
 		if ((clock() - lastClickTime) / CLOCKS_PER_SEC > constants::mouse::FREQUENCY)
 		{
-			changeState(1);
+			nextState = state + shift;
+
+			if (nextState < 0)
+				nextState = TypesManager::getInstance().getAmmountOfTypes() - 1;
+			else
+				nextState %= TypesManager::getInstance().getAmmountOfTypes();
+
 			lastClickTime = clock();
-		}	
+		}
 	}
 
 	int Cell::getState() const

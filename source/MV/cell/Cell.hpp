@@ -44,9 +44,6 @@ namespace mv
 		//Change state for given shift
 		void changeState(int shift);
 
-		//Change state for 1 
-		void changeState();
-
 		//Returns number of state
 		int getState() const;
 

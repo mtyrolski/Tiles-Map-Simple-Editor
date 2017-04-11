@@ -48,7 +48,15 @@ namespace mv
 			auto pos = Math::convertToUnitPosition(object.getPosition());
 
 			if(MapManager::getInstance().isInMap(pos))
-				(*MapManager::getInstance().getCellStorage())[pos.y*MapManager::getInstance().getUnitWorldSize().x + pos.x].changeState();
+				(*MapManager::getInstance().getCellStorage())[pos.y*MapManager::getInstance().getUnitWorldSize().x + pos.x].changeState(1);
+		}
+		else if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+		{
+			auto pos = Math::convertToUnitPosition(object.getPosition());
+
+			if (MapManager::getInstance().isInMap(pos))
+				(*MapManager::getInstance().getCellStorage())[pos.y*MapManager::getInstance().getUnitWorldSize().x + pos.x].changeState(-1);
+
 		}
 	}
 
