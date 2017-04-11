@@ -4,7 +4,7 @@ namespace mv
 {
 	MapManager* MapManager::instance;
 
-	void MapManager::createWorld(uint8_t defaultStateNumber)
+	void MapManager::createWorld(int defaultStateNumber)
 	{
 		for (int j = 0; j < unitWorldSize.y; j++)
 		{

@@ -25,10 +25,10 @@ namespace mv
 		sf::Sprite object;
 
 		//State of cell
-		uint8_t state;
+		int state;
 
 		//State of cell in next cycle
-		uint8_t nextState;
+		int nextState;
 
 		//Position in unit system
 		const sf::Vector2i unitPosition;
@@ -48,7 +48,7 @@ namespace mv
 		void changeState();
 
 		//Returns number of state
-		uint8_t getState() const;
+		int getState() const;
 
 		//Change cell's state to given number
 		//returns false if state hasn't been changed

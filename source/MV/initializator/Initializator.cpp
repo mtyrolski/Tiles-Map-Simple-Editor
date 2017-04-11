@@ -29,7 +29,7 @@ namespace mv
 		mv::TypesManager::createInstance();
 
 		mv::MapManager::createInstance(mv::Loader::getInstance().UnitMapSize, mv::Loader::getInstance().cellDimensions);
-		mv::MapManager::getInstance().constructWholeWorld(0);
+		mv::MapManager::getInstance().constructWholeWorld(constants::defaults::DEFAULT_STATE_NUMBER);
 
 		mv::Scene::createInstance(mv::Loader::getInstance().title, sf::Vector2f(mv::Loader::getInstance().UnitMapSize.x*mv::Loader::getInstance().cellDimensions.x, mv::Loader::getInstance().UnitMapSize.y*mv::Loader::getInstance().cellDimensions.y));
 

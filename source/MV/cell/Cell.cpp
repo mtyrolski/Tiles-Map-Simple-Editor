@@ -1,5 +1,4 @@
 #include "Cell.hpp"
-
 namespace mv
 {
 	void Cell::draw(sf::RenderTarget & target, sf::RenderStates states) const
@@ -19,9 +18,9 @@ namespace mv
 		else
 		{
 			state = stateNumber;
-			auto cellDimensions = Loader::getInstance().cellDimensions;
-			object.setTextureRect(sf::IntRect(state*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
+			object.setTextureRect(sf::IntRect(stateNumber*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
 		}
+		object.setPosition(unitPosition.x*cellDimensions.x, unitPosition.y*cellDimensions.y);
 	}
 
 	void Cell::setVisualSettings(sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
@@ -30,7 +29,7 @@ namespace mv
 	}
 
 	Cell::Cell(sf::Vector2i & uPos, sf::Vector2f & cellDimensions, int stateNumber)
-		:unitPosition(uPos),lastClickTime(clock()), nextState(0)
+		:unitPosition(uPos),lastClickTime(clock()), nextState(stateNumber)
 	{
 		setBasicParameters(stateNumber,cellDimensions,uPos);
 	}
@@ -50,7 +49,7 @@ namespace mv
 		}	
 	}
 
-	uint8_t Cell::getState() const
+	int Cell::getState() const
 	{
 		return state;
 	}

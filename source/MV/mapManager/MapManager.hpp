@@ -22,7 +22,7 @@ namespace mv
 		//Dimensions of cell(in px)
 		sf::Vector2f cellDimensions{ 0,0 };
 
-		uint8_t initialState;
+		int initialState;
 
 		static MapManager* instance;
 
@@ -63,7 +63,7 @@ namespace mv
 	
 	protected:
 	private:
-		void createWorld(uint8_t defaultStateNumber);
+		void createWorld(int defaultStateNumber);
 
 		MapManager(sf::Vector2i uWorldSize, const sf::Vector2f& celldimensions);
 		MapManager() = delete;  // Not Implemented
