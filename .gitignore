@@ -1,12 +1,10 @@
+obj/
+Propeties/
+bin/
 *.resources
 *.pdb
 *.manifest
 *.cache
-*.Cache
-*.cache
-obj/
-Propeties/
-bin/
 *.resx
 *.csproj
 *.config
