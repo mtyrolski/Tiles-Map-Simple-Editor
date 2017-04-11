@@ -9,16 +9,13 @@ Tiles map editor based on MV-Engine
 
 .
 ## 2. Build your map!
-### Run Loader.exe and set propeties and click "Run Editor"
+### Run Loader.exe, set propeties and click "Run Editor"
 #### left/right mouse button - to change texture
 #### WSAD - to move camera
 #### Scroll - to zoom
 #### E - rotate tile by 90 (only in rotating mode)
 #### Exit program to save progress
-
-.
-
-.
+#### your results will be in output.txt
 
 ## How to understand numbers?
 
