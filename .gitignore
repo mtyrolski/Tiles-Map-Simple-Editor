@@ -58,3 +58,5 @@ Temporary Items
 *.filters
 *.user
 *.inl
+*.opendb
+*.suo

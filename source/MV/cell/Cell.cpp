@@ -4,12 +4,7 @@ namespace mv
 {
 	void Cell::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
-		target.draw(shape, states);
-	}
-
-	void Cell::setColor(sf::Color color)
-	{
-		shape.setFillColor(color);
+		target.draw(object, states);
 	}
 
 	void Cell::setBasicParameters(int stateNumber, sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
@@ -22,7 +17,6 @@ namespace mv
 		else
 		{
 			state = stateNumber;
-			setColor(StateSystem::getColorOfState(state));
 		}
 	}
 
@@ -36,16 +30,12 @@ namespace mv
 		else
 		{
 			state = StateSystem::getNumberOfState(name);
-			setColor(StateSystem::getColorOfState(state));
 		}
 	}
 
 	void Cell::setVisualSettings(sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
 	{
-		shape.setSize(cellDimensions);
-		shape.setOutlineThickness(cellDimensions.x / 10.0f); //10%
-		shape.setOutlineColor(constants::cell::FILL_COLOR);
-		shape.setPosition(uPos.x*cellDimensions.x, uPos.y*cellDimensions.y);
+		object.setPosition(uPos.x*cellDimensions.x, uPos.y*cellDimensions.y);
 	}
 
 
@@ -53,14 +43,12 @@ namespace mv
 	Cell::Cell(sf::Vector2i& uPos, sf::Vector2f& cellDimensions, const std::string& stateName)
 		:unitPosition(uPos), lastClickTime(clock()),nextState(0)
 	{
-		setVisualSettings(cellDimensions, uPos);
 		setBasicParameters(stateName,cellDimensions,uPos);
 	}
 
 	Cell::Cell(sf::Vector2i & uPos, sf::Vector2f & cellDimensions, int stateNumber)
 		:unitPosition(uPos),lastClickTime(clock()), nextState(0)
 	{
-		setVisualSettings(cellDimensions, uPos);
 		setBasicParameters(stateNumber,cellDimensions,uPos);
 	}
 
@@ -68,7 +56,6 @@ namespace mv
 	{
 		nextState = state + shift;
 		nextState %= StateSystem::getAmmountStates();
-		setColor(StateSystem::getColorOfState(nextState));
 	}
 
 	void Cell::changeState()
@@ -85,17 +72,6 @@ namespace mv
 		return state;
 	}
 
-	bool Cell::setState(std::string stateName)
-	{
-		if (StateSystem::getNumberOfState(stateName) != constants::error::stateSystem::ERROR_VALUE)
-		{
-			state = StateSystem::getNumberOfState(stateName);
-			setColor(StateSystem::getColorOfState(stateName));
-			return true;
-		}
-
-		return false;
-	}
 
 	bool Cell::setState(uint8_t stateNumber)
 	{
@@ -112,10 +88,5 @@ namespace mv
 	void Cell::update()
 	{
 		state = nextState;
-	}
-
-	void Cell::setOutlineColor(const sf::Color & color)
-	{
-		shape.setOutlineColor(color);
 	}
 }

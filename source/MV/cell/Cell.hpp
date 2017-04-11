@@ -4,7 +4,8 @@
 
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics/Drawable.hpp>
-#include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 
@@ -20,7 +21,7 @@ namespace mv
 	protected:
 	private:
 		//Shape of cell
-		sf::RectangleShape shape;
+		sf::Sprite object;
 
 		//State of cell
 		uint8_t state;
@@ -48,28 +49,17 @@ namespace mv
 		//Returns number of state
 		uint8_t getState() const;
 
-		//Change cell's state to given name
-		//returns false if state hasn't been changed
-		//returns true if state has been changed
-		bool setState(std::string stateName);
-
 		//Change cell's state to given number
 		//returns false if state hasn't been changed
 		//returns true if state has been changed
 		bool setState(uint8_t stateNumber);
 
 		//Updates cell state to next state
-		void update();
-
-		//Sets outline color of cell
-		void setOutlineColor(const sf::Color& color);
+		void update();;
 
 	protected:
 	private:
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
-		void setColor(sf::Color color);
-
 
 		void setBasicParameters(int stateNumber, sf::Vector2f& cellDimensions, sf::Vector2i& uPos);
 		void setBasicParameters(const std::string& name, sf::Vector2f& cellDimensions, sf::Vector2i& uPos);
