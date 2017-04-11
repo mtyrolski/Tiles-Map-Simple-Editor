@@ -2,6 +2,7 @@
 
 #include "MV/logger/Logger.hpp"
 #include "MV/resourceCache/Cache.hpp"
+#include "MV/loader/Loader.hpp"
 
 namespace mv
 {
@@ -13,15 +14,23 @@ namespace mv
 	protected:
 	private:
 		static TypesManager *instance;
+
+		int ammountOfTiles;
 		/* ===Methods=== */
 	public:
 		//Inits the program
 
 		static TypesManager& getInstance();
 		static void createInstance();
+
+		void init();
+
+		int getAmmountOfTypes();
+
+		bool isTypeExist(int number);
 	protected:
 	private:
-		TypesManager() = default;
+		TypesManager();
 		TypesManager(TypesManager const& copy) = delete;            // Not Implemented
 		TypesManager& operator=(TypesManager const& copy) = delete; // Not Implemented
 	};

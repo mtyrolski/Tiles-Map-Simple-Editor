@@ -16,4 +16,25 @@ namespace mv
 			instance = new TypesManager();
 	}
 
+	void TypesManager::init()
+	{
+		ammountOfTiles = textureAtlasCache.get("data/textures/atlas.png").getSize().x / Loader::getInstance().cellDimensions.x;
+	}
+
+	int TypesManager::getAmmountOfTypes()
+	{
+		return ammountOfTiles;
+	}
+
+	bool TypesManager::isTypeExist(int number)
+	{
+		return number >= 0 && number < ammountOfTiles;
+	}
+
+	TypesManager::TypesManager()
+	{
+		init();
+	}
+
+
 }

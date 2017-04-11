@@ -9,10 +9,10 @@ namespace mv
 
 	void Cell::setBasicParameters(int stateNumber, sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
 	{
-		if (!StateSystem::isStateExist(stateNumber))
+		if (!TypesManager::getInstance().isTypeExist(stateNumber))
 		{
 			Logger::Log(constants::error::stateSystem::STATE_DOES_NOT_EXIST, Logger::STREAM::BOTH, Logger::TYPE::ERROR);
-			state = StateSystem::getNumberOfState(constants::defaults::EMPTY);
+			state = 0; //empty in future
 		}
 		else
 		{
@@ -20,7 +20,7 @@ namespace mv
 		}
 	}
 
-	void Cell::setBasicParameters(const std::string& name, sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
+	/*void Cell::setBasicParameters(const std::string& name, sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
 	{
 		if (!StateSystem::isStateExist(name))
 		{
@@ -31,7 +31,7 @@ namespace mv
 		{
 			state = StateSystem::getNumberOfState(name);
 		}
-	}
+	}*/
 
 	void Cell::setVisualSettings(sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
 	{
@@ -40,11 +40,11 @@ namespace mv
 
 
 
-	Cell::Cell(sf::Vector2i& uPos, sf::Vector2f& cellDimensions, const std::string& stateName)
+	/*Cell::Cell(sf::Vector2i& uPos, sf::Vector2f& cellDimensions, const std::string& stateName)
 		:unitPosition(uPos), lastClickTime(clock()),nextState(0)
 	{
 		setBasicParameters(stateName,cellDimensions,uPos);
-	}
+	}*/
 
 	Cell::Cell(sf::Vector2i & uPos, sf::Vector2f & cellDimensions, int stateNumber)
 		:unitPosition(uPos),lastClickTime(clock()), nextState(0)
@@ -55,7 +55,7 @@ namespace mv
 	void Cell::changeState(int shift)
 	{
 		nextState = state + shift;
-		nextState %= StateSystem::getAmmountStates();
+		nextState %= TypesManager::getInstance().getAmmountOfTypes();
 	}
 
 	void Cell::changeState()
@@ -75,7 +75,7 @@ namespace mv
 
 	bool Cell::setState(uint8_t stateNumber)
 	{
-		if (StateSystem::isStateExist(stateNumber))
+		if (TypesManager::getInstance().isTypeExist(stateNumber))
 		{
 			state = stateNumber;
 			return true;

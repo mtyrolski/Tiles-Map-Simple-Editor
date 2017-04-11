@@ -9,8 +9,9 @@
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 
+#include "MV/logger/Logger.hpp"
 #include "MV/config/Config.hpp"
-#include "MV/stateSystem/StateSystem.hpp"
+#include "MV/typesManager/TypesManager.hpp"
 
 namespace mv
 {
