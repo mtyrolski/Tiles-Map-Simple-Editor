@@ -16,5 +16,10 @@ namespace Loader
         {
             InitializeComponent();
         }
+
+        private void authorPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/mvxxx");
+        }
     }
 }

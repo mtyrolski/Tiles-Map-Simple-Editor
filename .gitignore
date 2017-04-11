@@ -1,0 +1,7 @@
+*.resources
+*.pdb
+*.manifest
+*.cache
+*.Cache
+*.cache
+obj/Debug/Loader.csproj.FileListAbsolute.txt
