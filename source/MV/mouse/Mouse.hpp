@@ -53,6 +53,8 @@ namespace mv
 
 		void tick() override;
 
+		sf::Vector2f getPosition();
+
 	protected:
 	private:
 		Mouse(const Mouse::TYPE& type = Mouse::TYPE::MV_DEFAULT, bool movingBorderPermission = false);

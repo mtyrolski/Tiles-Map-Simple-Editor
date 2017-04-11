@@ -1,5 +1,6 @@
 #include "Mouse.hpp"
 #include <iostream>
+
 namespace mv
 {
 	Mouse *Mouse::instance;
@@ -66,7 +67,7 @@ namespace mv
 	{
 		object.setTexture(cache.get("data/textures/mouseAtlas.png"));
 		object.setTextureRect(sf::IntRect(static_cast<int>(type)*constants::defaults::MOUSE_DIMENSIONS.x, 0, constants::defaults::MOUSE_DIMENSIONS.x, constants::defaults::MOUSE_DIMENSIONS.y));
-		object.setOrigin(object.getGlobalBounds().width / 2, object.getGlobalBounds().height / 2);
+		object.setOrigin(object.getGlobalBounds().width, object.getGlobalBounds().height);
 	}
 
 	Mouse & Mouse::getInstance()
@@ -127,5 +128,10 @@ namespace mv
 
 		if(movingPermission)
 			checkBorders();
+	}
+
+	sf::Vector2f Mouse::getPosition()
+	{
+		return object.getPosition();
 	}
 }

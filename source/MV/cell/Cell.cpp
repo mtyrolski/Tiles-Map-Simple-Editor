@@ -21,6 +21,7 @@ namespace mv
 			object.setTextureRect(sf::IntRect(stateNumber*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
 		}
 		object.setPosition(unitPosition.x*cellDimensions.x, unitPosition.y*cellDimensions.y);
+		object.setOrigin(object.getGlobalBounds().width / 2, object.getGlobalBounds().height / 2);
 	}
 
 	void Cell::setVisualSettings(sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
@@ -29,14 +30,14 @@ namespace mv
 	}
 
 	Cell::Cell(sf::Vector2i & uPos, sf::Vector2f & cellDimensions, int stateNumber)
-		:unitPosition(uPos),lastClickTime(clock()), nextState(stateNumber)
+		:unitPosition(uPos),lastActionTime(clock()), nextState(stateNumber)
 	{
 		setBasicParameters(stateNumber,cellDimensions,uPos);
 	}
 
 	void Cell::changeState(int shift)
 	{
-		if ((clock() - lastClickTime) / CLOCKS_PER_SEC > constants::mouse::FREQUENCY)
+		if ((clock() - lastActionTime) / CLOCKS_PER_SEC > constants::mouse::FREQUENCY)
 		{
 			nextState = state + shift;
 
@@ -45,7 +46,7 @@ namespace mv
 			else
 				nextState %= TypesManager::getInstance().getAmmountOfTypes();
 
-			lastClickTime = clock();
+			lastActionTime = clock();
 		}
 	}
 
@@ -82,5 +83,14 @@ namespace mv
 	const sf::Vector2i & Cell::getUnitPosition()
 	{
 		return unitPosition;
+	}
+
+	void Cell::rotate()
+	{
+		if ((clock() - lastActionTime) / CLOCKS_PER_SEC > constants::mouse::FREQUENCY)
+		{
+			object.rotate(mv::constants::cell::STRAIGHT_ANGLE);
+			lastActionTime = clock();
+		}
 	}
 }

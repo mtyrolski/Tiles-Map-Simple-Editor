@@ -33,7 +33,7 @@ namespace mv
 		//Position in unit system
 		const sf::Vector2i unitPosition;
 
-		float lastClickTime;
+		float lastActionTime;
 
 		/* ===Methods=== */
 	public:
@@ -57,6 +57,8 @@ namespace mv
 
 		//return position in unit system
 		const sf::Vector2i& getUnitPosition();
+
+		void rotate();
 
 	protected:
 	private:

@@ -4,6 +4,9 @@
 
 #include "MV/cell/Cell.hpp"
 #include "MV/ticker/Ticker.hpp"
+#include "MV/InputManager/InputManager.hpp"
+#include "MV/mouse/Mouse.hpp"
+#include "MV/math/Math.hpp"
 
 namespace mv
 {
@@ -25,6 +28,8 @@ namespace mv
 		int initialState;
 
 		static MapManager* instance;
+
+		InputManager inputManager;
 
 		/* ===Methods=== */
 	public:
@@ -69,5 +74,7 @@ namespace mv
 		MapManager() = delete;  // Not Implemented
 		MapManager(MapManager const& copy) = delete;            // Not Implemented
 		MapManager& operator=(MapManager const& copy) = delete; // Not Implemented
+
+		void rotateCell();
 	};
 }

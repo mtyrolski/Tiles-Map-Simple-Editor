@@ -10,4 +10,9 @@ namespace mv
 
 		return sf::Vector2i(pixelPosition.x,pixelPosition.y);
 	}
+
+	sf::Vector2i Math::convertToUnitPosition(float x, float y)
+	{
+		return convertToUnitPosition(sf::Vector2f(x,y));
+	}
 }

@@ -15,6 +15,7 @@ namespace mv
 		/* ===Methods=== */
 	public:
 		static sf::Vector2i convertToUnitPosition(sf::Vector2f pixelPosition);
+		static sf::Vector2i convertToUnitPosition(float x, float y);
 	protected:
 	private:
 	};

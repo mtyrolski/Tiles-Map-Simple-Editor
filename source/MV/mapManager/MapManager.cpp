@@ -27,6 +27,15 @@ namespace mv
 		}
 		MapManager::unitWorldSize = uWorldSize;
 		MapManager::cellDimensions = cellDim;
+
+		inputManager.addKeyToCheck(sf::Keyboard::E, []() { mv::MapManager::getInstance().rotateCell(); });
+	}
+
+	void MapManager::rotateCell()
+	{
+		auto pos = mv::Math::convertToUnitPosition(mv::Mouse::getInstance().getPosition());
+
+		map[pos.y*unitWorldSize.x + pos.x].rotate();
 	}
 
 
@@ -74,8 +83,7 @@ namespace mv
 	void MapManager::updateCells()
 	{
 		for (auto&var : map)
-			var.update();
-		
+			var.update();	
 	}
 
 	void MapManager::setDefaultState(Cell& cell)
