@@ -8,4 +8,6 @@ bin/
 *.resx
 *.csproj
 *.config
+*.settings
+
 obj/Debug/Loader.csproj.FileListAbsolute.txt
