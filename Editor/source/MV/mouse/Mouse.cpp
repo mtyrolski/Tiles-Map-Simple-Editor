@@ -20,7 +20,7 @@ namespace mv
 	void Mouse::checkBorders()
 	{
 		auto windowDimensions = mv::Scene::getInstance().GetPointerToWindow()->getSize();
-		
+
 		if (windowDimensions.y - sf::Mouse::getPosition(*mv::Scene::getInstance().GetPointerToWindow()).y < tolerance.y)
 		{
 			mv::Scene::getInstance().moveView(mv::Scene::DIRECTION::DOWN);
@@ -34,7 +34,7 @@ namespace mv
 		{
 			mv::Scene::getInstance().moveView(mv::Scene::DIRECTION::RIGHT);
 		}
-			
+
 		else if (sf::Mouse::getPosition(*mv::Scene::getInstance().GetPointerToWindow()).x < tolerance.x)
 		{
 			mv::Scene::getInstance().moveView(mv::Scene::DIRECTION::LEFT);
@@ -44,7 +44,7 @@ namespace mv
 
 	void Mouse::checkClick()
 	{
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			auto pos = Math::convertToUnitPosition(object.getPosition());
 
@@ -56,12 +56,13 @@ namespace mv
 
 	Mouse::Mouse(const Mouse::TYPE & type, bool movingBorderPermission)
 		:tolerance(mv::constants::defaults::BORDER_TOLERANCE.x, mv::constants::defaults::BORDER_TOLERANCE.y),
+		lastAction(clock()),
 		Ticker(this), movingPermission(movingBorderPermission)
 	{
 		object.setTexture(cache.get("data/textures/mouseAtlas.png"));
 		object.setTextureRect(sf::IntRect(static_cast<int>(type)*constants::defaults::MOUSE_DIMENSIONS.x, 0, constants::defaults::MOUSE_DIMENSIONS.x, constants::defaults::MOUSE_DIMENSIONS.y));
 		object.setOrigin(object.getGlobalBounds().width, object.getGlobalBounds().height);
-	
+
 		inputManager.addKeyToCheck(sf::Keyboard::Q, []() { mv::Mouse::getInstance().changeCellSetterType(); });
 	}
 
@@ -112,16 +113,16 @@ namespace mv
 
 	void Mouse::changeScale(float change)
 	{
-		object.setScale(sf::Vector2f(object.getScale().x+change, object.getScale().y+change));
+		object.setScale(sf::Vector2f(object.getScale().x + change, object.getScale().y + change));
 	}
 
 	void Mouse::tick()
 	{
 		positionUpdate();
-		
+
 		checkClick();
 
-		if(movingPermission)
+		if (movingPermission)
 			checkBorders();
 	}
 
@@ -132,6 +133,10 @@ namespace mv
 
 	void Mouse::changeCellSetterType()
 	{
-		stateSetter = stateSetter + 1 < mv::TypesManager::getInstance().getAmmountOfTypes() ? stateSetter + 1 : 0;
+		if ((clock() - lastAction) / CLOCKS_PER_SEC > constants::mouse::FREQUENCY)
+		{
+			stateSetter = stateSetter + 1 < mv::TypesManager::getInstance().getAmmountOfTypes() ? stateSetter + 1 : 0;
+			lastAction = clock();
+		}
 	}
 }

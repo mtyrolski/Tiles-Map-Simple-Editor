@@ -1,5 +1,7 @@
 #pragma once
 
+#include <ctime>
+
 #include "SFML/Graphics/Texture.hpp"
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/Graphics/RenderTarget.hpp"
@@ -12,6 +14,7 @@
 #include "MV//ticker/Ticker.hpp"
 #include "MV/resourceCache/Cache.hpp"
 #include "MV/math/Math.hpp"
+
 
 namespace mv
 {
@@ -39,6 +42,8 @@ namespace mv
 		InputManager inputManager;
 
 		int stateSetter;
+
+		float lastAction;
 
 		/* ===Methods=== */
 	public:

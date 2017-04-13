@@ -60,10 +60,9 @@ namespace mv
 	{
 		if (TypesManager::getInstance().isTypeExist(stateNumber))
 		{
-			state = stateNumber;
-
+			nextState = stateNumber;
 			auto cellDimensions = Loader::getInstance().cellDimensions;
-			object.setTextureRect(sf::IntRect(state*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
+			object.setTextureRect(sf::IntRect(stateNumber*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
 
 			return true;
 		}
