@@ -44,19 +44,12 @@ namespace mv
 
 	void Mouse::checkClick()
 	{
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-		{
-			auto pos = Math::convertToUnitPosition(object.getPosition());
-
-			if(MapManager::getInstance().isInMap(pos))
-				(*MapManager::getInstance().getCellStorage())[pos.y*MapManager::getInstance().getUnitWorldSize().x + pos.x].changeState(1);
-		}
-		else if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
 		{
 			auto pos = Math::convertToUnitPosition(object.getPosition());
 
 			if (MapManager::getInstance().isInMap(pos))
-				(*MapManager::getInstance().getCellStorage())[pos.y*MapManager::getInstance().getUnitWorldSize().x + pos.x].changeState(-1);
+				(*MapManager::getInstance().getCellStorage())[pos.y*MapManager::getInstance().getUnitWorldSize().x + pos.x].setState(stateSetter);
 
 		}
 	}
@@ -68,6 +61,8 @@ namespace mv
 		object.setTexture(cache.get("data/textures/mouseAtlas.png"));
 		object.setTextureRect(sf::IntRect(static_cast<int>(type)*constants::defaults::MOUSE_DIMENSIONS.x, 0, constants::defaults::MOUSE_DIMENSIONS.x, constants::defaults::MOUSE_DIMENSIONS.y));
 		object.setOrigin(object.getGlobalBounds().width, object.getGlobalBounds().height);
+	
+		inputManager.addKeyToCheck(sf::Keyboard::Q, []() { mv::Mouse::getInstance().changeCellSetterType(); });
 	}
 
 	Mouse & Mouse::getInstance()
@@ -133,5 +128,10 @@ namespace mv
 	sf::Vector2f Mouse::getPosition()
 	{
 		return object.getPosition();
+	}
+
+	void Mouse::changeCellSetterType()
+	{
+		stateSetter = stateSetter + 1 < mv::TypesManager::getInstance().getAmmountOfTypes() ? stateSetter + 1 : 0;
 	}
 }

@@ -7,6 +7,8 @@
 #include "SFML/Window/Mouse.hpp"
 
 #include "MV/scene/Scene.hpp"
+#include "MV/InputManager/InputManager.hpp"
+#include "MV/typesManager/TypesManager.hpp"
 #include "MV//ticker/Ticker.hpp"
 #include "MV/resourceCache/Cache.hpp"
 #include "MV/math/Math.hpp"
@@ -34,6 +36,10 @@ namespace mv
 
 		static Mouse *instance;
 
+		InputManager inputManager;
+
+		int stateSetter;
+
 		/* ===Methods=== */
 	public:
 		static Mouse& getInstance();
@@ -54,6 +60,8 @@ namespace mv
 		void tick() override;
 
 		sf::Vector2f getPosition();
+
+		void changeCellSetterType();
 
 	protected:
 	private:
