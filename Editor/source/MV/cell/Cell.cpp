@@ -3,12 +3,12 @@ namespace mv
 {
 	void Cell::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
-		target.draw(object, states);
+		target.draw(*dynamic_cast<sf::Sprite*>(object), states);
 	}
 
 	void Cell::setBasicParameters(int stateNumber, sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
 	{
-		object.setTexture(mv::TypesManager::getInstance().textureAtlasCache.get("data/textures/atlas.png"));
+		dynamic_cast<sf::Sprite*>(object)->setTexture(mv::TypesManager::getInstance().textureAtlasCache.get("data/textures/cellAtlas.png"));
 
 		if (!TypesManager::getInstance().isTypeExist(stateNumber))
 		{
@@ -18,20 +18,21 @@ namespace mv
 		else
 		{
 			state = stateNumber;
-			object.setTextureRect(sf::IntRect(stateNumber*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
+			dynamic_cast<sf::Sprite*>(object)->setTextureRect(sf::IntRect(stateNumber*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
 		}
-		object.setPosition(unitPosition.x*cellDimensions.x, unitPosition.y*cellDimensions.y);
-		object.setOrigin(object.getGlobalBounds().width / 2, object.getGlobalBounds().height / 2);
+		dynamic_cast<sf::Sprite*>(object)->setPosition(unitPosition.x*cellDimensions.x, unitPosition.y*cellDimensions.y);
+		dynamic_cast<sf::Sprite*>(object)->setOrigin( dynamic_cast<sf::Sprite*>(object)->getGlobalBounds().width / 2, dynamic_cast<sf::Sprite*>(object)->getGlobalBounds().height / 2);
 	}
 
 	void Cell::setVisualSettings(sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
 	{
-		object.setPosition(uPos.x*cellDimensions.x, uPos.y*cellDimensions.y);
+		dynamic_cast<sf::Sprite*>(object)->setPosition(uPos.x*cellDimensions.x, uPos.y*cellDimensions.y);
 	}
 
 	Cell::Cell(sf::Vector2i & uPos, sf::Vector2f & cellDimensions, int stateNumber)
 		:unitPosition(uPos),lastActionTime(clock()), nextState(stateNumber)
 	{
+		object = new sf::Sprite();
 		setBasicParameters(stateNumber,cellDimensions,uPos);
 	}
 
@@ -62,7 +63,7 @@ namespace mv
 		{
 			nextState = stateNumber;
 			auto cellDimensions = Loader::getInstance().cellDimensions;
-			object.setTextureRect(sf::IntRect(stateNumber*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
+			dynamic_cast<sf::Sprite*>(object)->setTextureRect(sf::IntRect(stateNumber*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
 
 			return true;
 		}
@@ -76,7 +77,7 @@ namespace mv
 		state = nextState;
 
 		auto cellDimensions = Loader::getInstance().cellDimensions;
-		object.setTextureRect(sf::IntRect(state*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
+		dynamic_cast<sf::Sprite*>(object)->setTextureRect(sf::IntRect(state*cellDimensions.x, 0, cellDimensions.x, cellDimensions.y));
 	}
 
 	const sf::Vector2i & Cell::getUnitPosition()
@@ -88,13 +89,13 @@ namespace mv
 	{
 		if ((clock() - lastActionTime) / CLOCKS_PER_SEC > constants::mouse::FREQUENCY)
 		{
-			object.rotate(mv::constants::cell::STRAIGHT_ANGLE);
+			dynamic_cast<sf::Sprite*>(object)->rotate(mv::constants::cell::STRAIGHT_ANGLE);
 			lastActionTime = clock();
 		}
 	}
 
 	int Cell::getRotationState()
 	{
-		return object.getRotation() / 90;
+		return dynamic_cast<sf::Sprite*>(object)->getRotation() / 90;
 	}
 }

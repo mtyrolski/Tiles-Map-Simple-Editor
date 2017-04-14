@@ -9,20 +9,21 @@
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 
+#include "MV/entity/Entity.hpp"
 #include "MV/logger/Logger.hpp"
 #include "MV/config/Config.hpp"
 #include "MV/typesManager/TypesManager.hpp"
 
 namespace mv
 {
-	class Cell : public sf::Drawable
+	class Cell : public Entity, sf::Drawable
 	{
 		/* ===Objects=== */
 	public:
 	protected:
 	private:
 		//Shape of cell
-		sf::Sprite object;
+		//sf::Sprite object;
 
 		//State of cell
 		int state;
