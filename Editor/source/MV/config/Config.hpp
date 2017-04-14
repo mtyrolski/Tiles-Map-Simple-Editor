@@ -12,6 +12,7 @@ namespace mv
 			const sf::Color FILL_COLOR(120, 133, 139); //Squirrel grey
 			constexpr auto STRAIGHT_ANGLE = 90;
 			constexpr auto stateInterval = 4;
+			constexpr auto CHANGED_STATE = "State has been changed";
 		}
 
 		namespace logger
@@ -33,6 +34,11 @@ namespace mv
 			constexpr auto FREQUENCY = 0.2f;
 		}
 		
+		namespace statementSystem
+		{
+			constexpr auto TIME_MESSAGE = 2.f;
+		}
+
 		namespace error
 		{
 			namespace stateSystem

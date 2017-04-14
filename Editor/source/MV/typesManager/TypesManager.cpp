@@ -20,7 +20,7 @@ namespace mv
 
 	void TypesManager::init()
 	{
-		ammountOfTiles = textureAtlasCache.get("data/textures/atlas.png").getSize().x / Loader::getInstance().cellDimensions.x;
+		ammountOfTiles = textureAtlasCache.get("data/textures/cellAtlas.png").getSize().x / Loader::getInstance().cellDimensions.x;
 	}
 
 	int TypesManager::getAmmountOfTypes()

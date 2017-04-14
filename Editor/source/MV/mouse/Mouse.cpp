@@ -137,6 +137,7 @@ namespace mv
 		{
 			stateSetter = stateSetter + 1 < mv::TypesManager::getInstance().getAmmountOfTypes() ? stateSetter + 1 : 0;
 			lastAction = clock();
+			//mv::StatementSystem::getInstance().addStatement(constants::cell::CHANGED_STATE,constants::statementSystem::TIME_MESSAGE);
 		}
 	}
 }

@@ -30,6 +30,8 @@ namespace mv
 
 		std::vector<Statement>& getStatements();
 
+		void removeAll();
+
 		void tick() override;
 
 		void addStatement(const std::string& _text, float time);

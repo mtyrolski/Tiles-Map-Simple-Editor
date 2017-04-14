@@ -11,6 +11,7 @@
 #include "MV/scene/Scene.hpp"
 #include "MV/InputManager/InputManager.hpp"
 #include "MV/typesManager/TypesManager.hpp"
+#include "MV/statementSystem/StatementSystem.hpp"
 #include "MV//ticker/Ticker.hpp"
 #include "MV/resourceCache/Cache.hpp"
 #include "MV/math/Math.hpp"

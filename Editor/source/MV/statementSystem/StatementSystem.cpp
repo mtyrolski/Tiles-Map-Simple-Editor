@@ -40,6 +40,11 @@ namespace mv
 		return statements;
 	}
 
+	void StatementSystem::removeAll()
+	{
+		statements.clear();
+	}
+
 	void StatementSystem::tick()
 	{
 		for (auto itr = statements.begin(); itr != statements.end();)
