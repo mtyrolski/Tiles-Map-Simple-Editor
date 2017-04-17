@@ -21,10 +21,10 @@ namespace mv
 	void TypesManager::init()
 	{
 		auto cellAtlas = textureAtlasCache.get( "data/textures/cellAtlas.png" );
-		ammountOfTiles = cellAtlas.getSize().x / cellAtlas.getSize().y;
+		ammountOfTiles = cellAtlas->getSize().x / cellAtlas->getSize().y;
 
 		auto mobAtlas = textureAtlasCache.get( "data/textures/mobAtlas.png" );
-		ammountOfMobs = mobAtlas.getSize().x / mobAtlas.getSize().y;
+		ammountOfMobs = mobAtlas->getSize().x / mobAtlas->getSize().y;
 	}
 
 	int TypesManager::getAmmountOfTypes()

@@ -59,7 +59,7 @@ namespace mv
 		lastAction(clock()),
 		Ticker(this), movingPermission(movingBorderPermission)
 	{
-		object.setTexture(cache.get("data/textures/mouseAtlas.png"));
+		object.setTexture(*cache.get("data/textures/mouseAtlas.png"));
 		object.setTextureRect(sf::IntRect(static_cast<int>(type)*constants::defaults::MOUSE_DIMENSIONS.x, 0, constants::defaults::MOUSE_DIMENSIONS.x, constants::defaults::MOUSE_DIMENSIONS.y));
 		object.setOrigin(object.getGlobalBounds().width, object.getGlobalBounds().height);
 
