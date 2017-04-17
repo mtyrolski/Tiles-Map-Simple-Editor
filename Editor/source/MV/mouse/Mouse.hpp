@@ -15,6 +15,7 @@
 #include "MV//ticker/Ticker.hpp"
 #include "MV/resourceCache/Cache.hpp"
 #include "MV/math/Math.hpp"
+#include "MV/flagObject/flagObject.hpp"
 
 
 namespace mv
@@ -45,6 +46,8 @@ namespace mv
 		int stateSetter;
 
 		float lastAction;
+
+		FlagObject informObject;
 
 		/* ===Methods=== */
 	public:

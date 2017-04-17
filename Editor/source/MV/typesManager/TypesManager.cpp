@@ -20,7 +20,11 @@ namespace mv
 
 	void TypesManager::init()
 	{
-		ammountOfTiles = textureAtlasCache.get("data/textures/cellAtlas.png").getSize().x / Loader::getInstance().cellDimensions.x;
+		auto cellAtlas = textureAtlasCache.get( "data/textures/cellAtlas.png" );
+		ammountOfTiles = cellAtlas.getSize().x / cellAtlas.getSize().y;
+
+		auto mobAtlas = textureAtlasCache.get( "data/textures/mobAtlas.png" );
+		ammountOfMobs = mobAtlas.getSize().x / mobAtlas.getSize().y;
 	}
 
 	int TypesManager::getAmmountOfTypes()
@@ -31,6 +35,11 @@ namespace mv
 	bool TypesManager::isTypeExist(int number)
 	{
 		return number >= 0 && number < ammountOfTiles;
+	}
+
+	mv::Cache<sf::Texture>& TypesManager::getAtlasCache()
+	{
+		return textureAtlasCache;
 	}
 
 	TypesManager::TypesManager()

@@ -16,6 +16,7 @@ namespace mv
 		static TypesManager *instance;
 
 		int ammountOfTiles;
+		int ammountOfMobs;
 		/* ===Methods=== */
 	public:
 		//Inits the program
@@ -28,6 +29,8 @@ namespace mv
 		int getAmmountOfTypes();
 
 		bool isTypeExist(int number);
+
+		mv::Cache<sf::Texture>& getAtlasCache();
 	protected:
 	private:
 		TypesManager();
