@@ -7,6 +7,7 @@ namespace mv
 
 	void Mouse::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
+		target.draw( informObject, states );
 		target.draw(object, states);
 	}
 
@@ -59,11 +60,13 @@ namespace mv
 		lastAction(clock()),
 		Ticker(this), movingPermission(movingBorderPermission)
 	{
-		object.setTexture(*cache.get("data/textures/mouseAtlas.png"));
+		object.setTexture(*mouseTexture.get("data/textures/mouseAtlas.png"));
 		object.setTextureRect(sf::IntRect(static_cast<int>(type)*constants::defaults::MOUSE_DIMENSIONS.x, 0, constants::defaults::MOUSE_DIMENSIONS.x, constants::defaults::MOUSE_DIMENSIONS.y));
 		object.setOrigin(object.getGlobalBounds().width, object.getGlobalBounds().height);
 
 		inputManager.addKeyToCheck(sf::Keyboard::Q, []() { mv::Mouse::getInstance().changeCellSetterType(); });
+		
+		informObject.updateTexture( *TypesManager::getInstance().getAtlasCache().get(*constants::TypesManager::paths.begin()),FlagObject::TYPE::CELL );
 	}
 
 	Mouse & Mouse::getInstance()
@@ -124,6 +127,8 @@ namespace mv
 
 		if (movingPermission)
 			checkBorders();
+
+		informObject.updatePosition( sf::Vector2f( object.getPosition().x-object.getGlobalBounds().width/2.f, object.getPosition().y - object.getGlobalBounds().height/2.f ) );
 	}
 
 	sf::Vector2f Mouse::getPosition()
@@ -136,8 +141,8 @@ namespace mv
 		if ((clock() - lastAction) / CLOCKS_PER_SEC > constants::mouse::FREQUENCY)
 		{
 			stateSetter = stateSetter + 1 < mv::TypesManager::getInstance().getAmmountOfTypes() ? stateSetter + 1 : 0;
-			lastAction = clock();
-			//mv::StatementSystem::getInstance().addStatement(constants::cell::CHANGED_STATE,constants::statementSystem::TIME_MESSAGE);
+			informObject.updateType( stateSetter );
+			lastAction = clock();			
 		}
 	}
 }

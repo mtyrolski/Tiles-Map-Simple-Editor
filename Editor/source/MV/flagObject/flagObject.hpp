@@ -26,6 +26,7 @@ namespace mv
 		TYPE type;
 		/* ===Methods=== */
 	public:
+
 		void updatePosition( const sf::Vector2f& position );
 		void updateType( int state );
 		void updateTexture( sf::Texture& texture, TYPE type );

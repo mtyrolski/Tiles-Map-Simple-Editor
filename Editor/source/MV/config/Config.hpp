@@ -3,6 +3,9 @@
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/System/Vector2.hpp>
 
+#include <vector>
+#include <string>
+
 namespace mv
 {
 	namespace constants
@@ -37,6 +40,15 @@ namespace mv
 		namespace statementSystem
 		{
 			constexpr auto TIME_MESSAGE = 2.f;
+		}
+
+		namespace TypesManager
+		{
+			const std::vector<std::string> paths
+			{
+				"data/textures/cellAtlas.png",
+				"data/textures/mobAtlas.png"
+			};
 		}
 
 		namespace error

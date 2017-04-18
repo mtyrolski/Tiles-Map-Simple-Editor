@@ -2,10 +2,6 @@
 
 #include <ctime>
 
-#include "SFML/Graphics/Texture.hpp"
-#include "SFML/Graphics/Sprite.hpp"
-#include "SFML/Graphics/RenderTarget.hpp"
-#include "SFML/Graphics/RenderStates.hpp"
 #include "SFML/Window/Mouse.hpp"
 
 #include "MV/scene/Scene.hpp"
@@ -29,6 +25,9 @@ namespace mv
 			MV_DEFAULT = 0,
 			SYSTEM_DEFAULT = 1,
 		};
+
+		FlagObject informObject;
+
 	protected:
 	private:
 		sf::Sprite object;
@@ -37,7 +36,7 @@ namespace mv
 		sf::Vector2u tolerance;
  
 		bool movingPermission;
-		mv::Cache<sf::Texture> cache;
+		mv::Cache<sf::Texture> mouseTexture;
 
 		static Mouse *instance;
 
@@ -46,8 +45,6 @@ namespace mv
 		int stateSetter;
 
 		float lastAction;
-
-		FlagObject informObject;
 
 		/* ===Methods=== */
 	public:

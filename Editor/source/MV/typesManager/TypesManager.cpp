@@ -20,11 +20,8 @@ namespace mv
 
 	void TypesManager::init()
 	{
-		auto cellAtlas = textureAtlasCache.get( "data/textures/cellAtlas.png" );
-		ammountOfTiles = cellAtlas->getSize().x / cellAtlas->getSize().y;
-
-		auto mobAtlas = textureAtlasCache.get( "data/textures/mobAtlas.png" );
-		ammountOfMobs = mobAtlas->getSize().x / mobAtlas->getSize().y;
+		auto cellAtlasTexture = atlasCache.get( "data/textures/cellAtlas.png" );
+		ammountOfTiles = cellAtlasTexture->getSize().x / cellAtlasTexture->getSize().y;
 	}
 
 	int TypesManager::getAmmountOfTypes()
@@ -39,7 +36,7 @@ namespace mv
 
 	mv::Cache<sf::Texture>& TypesManager::getAtlasCache()
 	{
-		return textureAtlasCache;
+		return atlasCache;
 	}
 
 	TypesManager::TypesManager()
