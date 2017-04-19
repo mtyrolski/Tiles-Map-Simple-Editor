@@ -2,6 +2,27 @@
 
 namespace mv
 {
+	FlagObject* FlagObject::instance;
+
+	FlagObject & FlagObject::getInstance()
+	{
+		if ( instance == nullptr )
+			Logger::Log( constants::error::singleton::SINGLETON_NOT_INITED, Logger::STREAM::BOTH, Logger::TYPE::ERROR );
+
+		return *instance;
+	}
+
+	void FlagObject::createInstance()
+	{
+		if ( instance == nullptr )
+			instance = new FlagObject();
+	}
+
+	FlagObject::FlagObject()
+		:visible(true),lastClick(clock())
+	{
+		inputManager.addKeyToCheck( sf::Keyboard::V, []() { mv::FlagObject::getInstance().changeVisible(); } );
+	}
 
 	void FlagObject::updatePosition( const sf::Vector2f& position )
 	{
@@ -21,9 +42,22 @@ namespace mv
 		object.setOrigin( object.getGlobalBounds().width / 2.f, object.getGlobalBounds().height / 2.f );
 	}
 
+	void FlagObject::changeVisible()
+	{
+		if ( (clock() - lastClick) / CLOCKS_PER_SEC > constants::mouse::FREQUENCY )
+		{
+			visible = !visible;
+			lastClick = clock();
+		}
+	}
+
 	void FlagObject::draw( sf::RenderTarget & target, sf::RenderStates states ) const
 	{
-		target.draw( object, states );
+		if ( visible )
+		{
+			target.draw( object, states );
+		}
+			
 	}
 }
 	

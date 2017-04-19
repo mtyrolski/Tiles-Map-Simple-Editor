@@ -25,9 +25,6 @@ namespace mv
 			MV_DEFAULT = 0,
 			SYSTEM_DEFAULT = 1,
 		};
-
-		FlagObject informObject;
-
 	protected:
 	private:
 		sf::Sprite object;
