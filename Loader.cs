@@ -13,6 +13,9 @@ namespace Loader
 {
     public partial class Loader : Form
     {
+        //path,name,number
+        private List<Tuple<string, string, int>> source = new List<Tuple<string, string, int>>();
+
         public Loader()
         {
             InitializeComponent();
@@ -25,51 +28,89 @@ namespace Loader
 
         private void runButton_Click(object sender, EventArgs e)
         {
-            if(checkTextboxes())
-            {
-                printValues();
-            }
+            //if(checkTextboxes())
+            //{
+            //    printValues();
+            //}
         }
 
-        private bool checkTextboxes()
-        {
-            int parsedValue;
-
-            if (!int.TryParse(dimX.Text, out parsedValue) || parsedValue <=0 ||
-                !int.TryParse(dimY.Text, out parsedValue) || parsedValue <= 0 ||
-                !int.TryParse(unitWorldSizeX.Text, out parsedValue) || parsedValue <= 0 ||
-                !int.TryParse(unitWorldSizeY.Text, out parsedValue) || parsedValue <= 0)
-            {
-                MessageBox.Show("You need to enter integer >0 to each of textboxes");
-                return false;
-            }
-            return true;
-        }
         
         private void printValues()
         {
-            try
-            {
-                File.WriteAllText("data/options/options.txt", "TilesMapEditor" +
-                     Environment.NewLine + dimX.Text + ' ' + dimY.Text +
-                     Environment.NewLine + unitWorldSizeX.Text + ' ' + unitWorldSizeY.Text +
-                     Environment.NewLine + (rotateBox.Checked == true ? '1' : '0'));
+            //try
+            //{
+            //    File.WriteAllText("data/options/options.txt", "TilesMapEditor" +
+            //         Environment.NewLine + dimX.Text + ' ' + dimY.Text +
+            //         Environment.NewLine + unitWorldSizeX.Text + ' ' + unitWorldSizeY.Text +
+            //         Environment.NewLine + (rotateBox.Checked == true ? '1' : '0'));
 
-                var game = new System.Diagnostics.Process();
-                game.StartInfo.FileName = "MV-Engine.exe";
-                game.Start();
-                this.Close();
-            }
-            catch (Exception ex)
-            {
+            //    var game = new System.Diagnostics.Process();
+            //    game.StartInfo.FileName = "MV-Engine.exe";
+            //    game.Start();
+            //    this.Close();
+            //}
+            //catch (Exception ex)
+            //{
                 
-                MessageBox.Show("An error occurred - please contact with author of project. /n " + ex.Message);
-            }
+            //    MessageBox.Show("An error occurred - please contact with author of project. /n " + ex.Message);
+            //}
         }
 
         private void helpButton_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/mvxxx/Tiles-Map-Simple-Editor");
+        }
+
+        private void sourceButton_Click(object sender, EventArgs e)
+        {
+            if(checkData())
+            {
+                emplaceNewSource();
+            }
+        }
+
+        private void emplaceNewSource()
+        {
+            source.Add(new Tuple<string, string, int>(pathTB.Text, nameTB.Text, Convert.ToInt16(layerTB.Text)));
+            data.Items.Add(new Tuple<string, int>(nameTB.Text,Convert.ToInt16(layerTB.Text)));
+        }
+
+        private bool checkData()
+        {
+            return checkTextBoxes() && checkUniqueData(); 
+        }
+
+        private bool checkUniqueData()
+        {
+            foreach (var info in source)
+            {
+                if (info.Item2 == nameTB.Text ||
+                    info.Item3 == Convert.ToInt16(layerTB.Text))
+                {
+                    MessageBox.Show("Source with given parameters exists");
+                    return false;
+                }
+            }
+
+            return true; 
+        }
+
+        private bool checkTextBoxes()
+        {
+            if (pathTB.Text == "" || nameTB.Text == "" || layerTB.Text == "")
+            {
+                MessageBox.Show("Firstly, you need to fill the gaps");
+                return false;
+            }
+
+            int parsedValue;
+            if (!int.TryParse(layerTB.Text, out parsedValue) || parsedValue < 0)
+            {
+                MessageBox.Show("Layer must be a positive number");
+                return false;
+            }
+
+            return true;
         }
     }
 }
