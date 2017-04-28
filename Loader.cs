@@ -38,27 +38,50 @@ namespace Loader
 
         private bool checkCohesion()
         {
-            return false;
+            bool[] flagTab = new bool[source.Count];
+
+            foreach(var info in source)
+            {
+                try
+                {
+                    flagTab[info.Item3] = true;
+                }catch(Exception ex)
+                {
+                    MessageBox.Show("Error in checking cohesion. Check your data again...");
+                    return false;
+                }                
+            }
+            return true;
         }
 
         private void printValues()
         {
-            //try
-            //{
-            //    File.WriteAllText("data/options/options.txt", "TilesMapEditor" +
-            //         Environment.NewLine + dimX.Text + ' ' + dimY.Text +
-            //         Environment.NewLine + unitWorldSizeX.Text + ' ' + unitWorldSizeY.Text +
-            //         Environment.NewLine + (rotateBox.Checked == true ? '1' : '0'));
+            try
+            {
+                //title
+                File.WriteAllText("data/options/options.txt", "TilesMapEditor" + Environment.NewLine);
 
-            //    var game = new System.Diagnostics.Process();
-            //    game.StartInfo.FileName = "MV-Engine.exe";
-            //    game.Start();
-            //    this.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("An error occurred - please contact with author of project. /n " + ex.Message);
-            //}
+                //ammount of textures
+                File.AppendAllText("data/options/options.txt", source.Count.ToString() + Environment.NewLine);
+
+                //main data
+                foreach (var info in source)
+                {
+                    File.AppendAllText("data/options/options.txt", info.Item1+ " " + info.Item2 + " " + info.Item3.ToString() + Environment.NewLine);
+                }
+
+                //rotation mode
+                File.AppendAllText("data/options/options.txt", rotateBox.Checked == true ? "1" : "0");
+
+                var game = new System.Diagnostics.Process();
+                game.StartInfo.FileName = "MV-Engine.exe";
+                game.Start();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred - please contact with author of project. /n " + ex.Message);
+            }
         }
 
         private void helpButton_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
