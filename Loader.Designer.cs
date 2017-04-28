@@ -42,6 +42,8 @@
             this.pathLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.layerLabel = new System.Windows.Forms.Label();
+            this.copyButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainLabel
@@ -141,7 +143,7 @@
             // data
             // 
             this.data.FormattingEnabled = true;
-            this.data.Location = new System.Drawing.Point(12, 160);
+            this.data.Location = new System.Drawing.Point(18, 144);
             this.data.Name = "data";
             this.data.Size = new System.Drawing.Size(121, 21);
             this.data.TabIndex = 17;
@@ -176,11 +178,33 @@
             this.layerLabel.TabIndex = 20;
             this.layerLabel.Text = "Layer (number)";
             // 
+            // copyButton
+            // 
+            this.copyButton.Location = new System.Drawing.Point(160, 158);
+            this.copyButton.Name = "copyButton";
+            this.copyButton.Size = new System.Drawing.Size(127, 23);
+            this.copyButton.TabIndex = 21;
+            this.copyButton.Text = "Copy data to textboxes";
+            this.copyButton.UseVisualStyleBackColor = true;
+            this.copyButton.Click += new System.EventHandler(this.copyButton_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(160, 129);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(127, 23);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "Remove";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Loader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 212);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.copyButton);
             this.Controls.Add(this.layerLabel);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.pathLabel);
@@ -219,6 +243,8 @@
         private System.Windows.Forms.Label pathLabel;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label layerLabel;
+        private System.Windows.Forms.Button copyButton;
+        private System.Windows.Forms.Button button2;
     }
 }
 

@@ -16,6 +16,8 @@ namespace Loader
         //path,name,number
         private List<Tuple<string, string, int>> source = new List<Tuple<string, string, int>>();
 
+        private const int ERROR_INDEX = -1;
+
         public Loader()
         {
             InitializeComponent();
@@ -28,13 +30,17 @@ namespace Loader
 
         private void runButton_Click(object sender, EventArgs e)
         {
-            //if(checkTextboxes())
-            //{
-            //    printValues();
-            //}
+            if(checkCohesion())
+            {
+                printValues();
+           }
         }
 
-        
+        private bool checkCohesion()
+        {
+            return false;
+        }
+
         private void printValues()
         {
             //try
@@ -51,7 +57,6 @@ namespace Loader
             //}
             //catch (Exception ex)
             //{
-                
             //    MessageBox.Show("An error occurred - please contact with author of project. /n " + ex.Message);
             //}
         }
@@ -111,6 +116,25 @@ namespace Loader
             }
 
             return true;
+        }
+
+        private void copyButton_Click(object sender, EventArgs e)
+        {
+            if (data.SelectedIndex != ERROR_INDEX)
+            {
+                pathTB.Text = source[data.SelectedIndex].Item1;
+                nameTB.Text = source[data.SelectedIndex].Item2;
+                layerTB.Text = source[data.SelectedIndex].Item3.ToString();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(data.SelectedIndex!=ERROR_INDEX)
+            {
+                source.RemoveAt(data.SelectedIndex);
+                data.Items.RemoveAt(data.SelectedIndex);
+            }    
         }
     }
 }
