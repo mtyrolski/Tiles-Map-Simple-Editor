@@ -10,13 +10,15 @@ namespace mv
 	{
 		/* ===Objects=== */
 	public:
-		mv::Cache<sf::Texture> textureAtlasCache;
 	protected:
 	private:
 		static TypesManager *instance;
 
 		int ammountOfTiles;
 		int ammountOfMobs;
+
+		mv::Cache<sf::Texture> atlasCache;
+
 		/* ===Methods=== */
 	public:
 		//Inits the program

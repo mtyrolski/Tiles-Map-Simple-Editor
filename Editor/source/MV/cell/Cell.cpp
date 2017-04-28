@@ -8,7 +8,7 @@ namespace mv
 
 	void Cell::setBasicParameters(int stateNumber, sf::Vector2f & cellDimensions, sf::Vector2i & uPos)
 	{
-		object.setTexture(*mv::TypesManager::getInstance().textureAtlasCache.get("data/textures/cellAtlas.png"));
+		object.setTexture(*mv::TypesManager::getInstance().getAtlasCache().get("data/textures/cellAtlas.png"));
 
 		if (!TypesManager::getInstance().isTypeExist(stateNumber))
 		{
@@ -95,6 +95,6 @@ namespace mv
 
 	int Cell::getRotationState()
 	{
-		return object.getRotation() / 90;
+		return object.getRotation() / constants::cell::STRAIGHT_ANGLE;
 	}
 }
