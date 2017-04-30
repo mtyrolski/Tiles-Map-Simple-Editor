@@ -44,6 +44,10 @@
             this.layerLabel = new System.Windows.Forms.Label();
             this.copyButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.uWordlSizeX = new System.Windows.Forms.TextBox();
+            this.uWordlSizeY = new System.Windows.Forms.TextBox();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.uWorldSizeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mainLabel
@@ -198,11 +202,46 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // uWordlSizeX
+            // 
+            this.uWordlSizeX.Location = new System.Drawing.Point(331, 127);
+            this.uWordlSizeX.Name = "uWordlSizeX";
+            this.uWordlSizeX.Size = new System.Drawing.Size(100, 20);
+            this.uWordlSizeX.TabIndex = 23;
+            // 
+            // uWordlSizeY
+            // 
+            this.uWordlSizeY.Location = new System.Drawing.Point(331, 153);
+            this.uWordlSizeY.Name = "uWordlSizeY";
+            this.uWordlSizeY.Size = new System.Drawing.Size(100, 20);
+            this.uWordlSizeY.TabIndex = 24;
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 212);
+            this.splitter1.TabIndex = 25;
+            this.splitter1.TabStop = false;
+            // 
+            // uWorldSizeLabel
+            // 
+            this.uWorldSizeLabel.AutoSize = true;
+            this.uWorldSizeLabel.Location = new System.Drawing.Point(334, 111);
+            this.uWorldSizeLabel.Name = "uWorldSizeLabel";
+            this.uWorldSizeLabel.Size = new System.Drawing.Size(97, 13);
+            this.uWorldSizeLabel.TabIndex = 26;
+            this.uWorldSizeLabel.Text = "unit world size x / y";
+            // 
             // Loader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 212);
+            this.Controls.Add(this.uWorldSizeLabel);
+            this.Controls.Add(this.splitter1);
+            this.Controls.Add(this.uWordlSizeY);
+            this.Controls.Add(this.uWordlSizeX);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.copyButton);
             this.Controls.Add(this.layerLabel);
@@ -245,6 +284,10 @@
         private System.Windows.Forms.Label layerLabel;
         private System.Windows.Forms.Button copyButton;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox uWordlSizeX;
+        private System.Windows.Forms.TextBox uWordlSizeY;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.Label uWorldSizeLabel;
     }
 }
 

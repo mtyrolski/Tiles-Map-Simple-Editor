@@ -56,10 +56,21 @@ namespace Loader
 
         private void printValues()
         {
+            int parsedValue;
+            if (!int.TryParse(uWordlSizeX.Text, out parsedValue) || parsedValue < 0 ||
+                !int.TryParse(uWordlSizeY.Text, out parsedValue) || parsedValue < 0)
+            {
+                MessageBox.Show("Unit World Size must be a positive number");
+                return;
+            }
+
             try
             {
                 //title
                 File.WriteAllText("data/options/options.txt", "TilesMapEditor" + Environment.NewLine);
+
+                //uWorldSize
+                File.AppendAllText("data/options/options.txt", Convert.ToInt16(uWordlSizeX) +" "+ Convert.ToInt16(uWordlSizeY)+Environment.NewLine);
 
                 //ammount of textures
                 File.AppendAllText("data/options/options.txt", source.Count.ToString() + Environment.NewLine);
@@ -132,7 +143,7 @@ namespace Loader
             }
 
             int parsedValue;
-            if (!int.TryParse(layerTB.Text, out parsedValue) || parsedValue < 0)
+            if (!int.TryParse(layerTB.Text, out parsedValue) || parsedValue < 0 )
             {
                 MessageBox.Show("Layer must be a positive number");
                 return false;
