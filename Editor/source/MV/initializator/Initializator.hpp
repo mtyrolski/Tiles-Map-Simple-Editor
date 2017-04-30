@@ -33,8 +33,8 @@ namespace mv
 	protected:
 	private:
 		Initializator() = default;
-		Initializator(Initializator const& copy) = delete;            // Not Implemented
-		Initializator& operator=(Initializator const& copy) = delete; // Not Implemented
+		Initializator( Initializator const& copy ) = delete;            // Not Implemented
+		Initializator& operator=( Initializator const& copy ) = delete; // Not Implemented
 
 		void initObjects();
 		void loadPropeties();

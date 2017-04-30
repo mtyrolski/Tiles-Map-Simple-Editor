@@ -6,32 +6,32 @@ namespace mv
 	StatementSystem* StatementSystem::instance;
 
 	StatementSystem::StatementSystem()
-		:Ticker(this)
+		:Ticker( this )
 	{
 	}
 
 	StatementSystem::~StatementSystem()
 	{
-		Ticker::removePointer(this);
+		Ticker::removePointer( this );
 	}
 
 	void StatementSystem::createInstance()
 	{
-		if (instance == 0)
+		if ( instance == 0 )
 		{
 			instance = new StatementSystem();
-			instance->font.loadFromFile("data/font/arial.ttf");
+			instance->font.loadFromFile( "data/font/arial.ttf" );
 		}
 		else
 		{
-			Logger::Log(constants::error::singleton::SINGLETON_INITED, Logger::STREAM::CONSOLE, Logger::TYPE::INFO);
+			Logger::Log( constants::error::singleton::SINGLETON_INITED, Logger::STREAM::CONSOLE, Logger::TYPE::INFO );
 		}
 	}
 
 	StatementSystem & StatementSystem::getInstance()
 	{
-		if (instance == 0)
-			Logger::Log(constants::error::singleton::SINGLETON_NOT_INITED, Logger::STREAM::BOTH, Logger::TYPE::ERROR);
+		if ( instance == 0 )
+			Logger::Log( constants::error::singleton::SINGLETON_NOT_INITED, Logger::STREAM::BOTH, Logger::TYPE::ERROR );
 		return *instance;
 	}
 
@@ -47,17 +47,17 @@ namespace mv
 
 	void StatementSystem::tick()
 	{
-		for (auto itr = statements.begin(); itr != statements.end();)
+		for ( auto itr = statements.begin(); itr != statements.end();)
 		{
-			if (!itr->isActive())
-				itr = statements.erase(itr);
+			if ( !itr->isActive() )
+				itr = statements.erase( itr );
 			else
 				++itr;
 		}
 	}
 
-	void StatementSystem::addStatement(const std::string & _text, float time)
+	void StatementSystem::addStatement( const std::string & _text, float time )
 	{
-		statements.emplace_back(_text, time,font,statements);
+		statements.emplace_back( _text, time, font, statements );
 	}
 }

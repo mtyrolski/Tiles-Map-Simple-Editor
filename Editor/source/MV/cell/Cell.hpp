@@ -38,11 +38,11 @@ namespace mv
 		/* ===Methods=== */
 	public:
 
-		Cell(sf::Vector2i& uPos, sf::Vector2f& cellDimensions, const std::string& stateName);
-		Cell(sf::Vector2i& uPos, sf::Vector2f& cellDimensions, int stateNumber);
+		Cell( sf::Vector2i& uPos, sf::Vector2f& cellDimensions, const std::string& stateName );
+		Cell( sf::Vector2i& uPos, sf::Vector2f& cellDimensions, int stateNumber );
 
 		//Change state for given shift
-		void changeState(int shift);
+		void changeState( int shift );
 
 		//Returns number of state
 		int getState() const;
@@ -50,7 +50,7 @@ namespace mv
 		//Change cell's state to given number
 		//returns false if state hasn't been changed
 		//returns true if state has been changed
-		bool setState(uint8_t stateNumber);
+		bool setState( uint8_t stateNumber );
 
 		//Updates cell state to next state
 		void update();;
@@ -58,17 +58,19 @@ namespace mv
 		//return position in unit system
 		const sf::Vector2i& getUnitPosition();
 
+		//rotates cell by 90
 		void rotate();
 
+		//returns direction of rotate
 		int getRotationState();
 
 	protected:
 	private:
-		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+		virtual void draw( sf::RenderTarget& target, sf::RenderStates states ) const;
 
-		void setBasicParameters(int stateNumber, sf::Vector2f& cellDimensions, sf::Vector2i& uPos);
-		void setBasicParameters(const std::string& name, sf::Vector2f& cellDimensions, sf::Vector2i& uPos);
+		void setBasicParameters( int stateNumber, sf::Vector2f& cellDimensions, sf::Vector2i& uPos );
+		void setBasicParameters( const std::string& name, sf::Vector2f& cellDimensions, sf::Vector2i& uPos );
 
-		void setVisualSettings(sf::Vector2f& cellDimensions, sf::Vector2i& uPos);
+		void setVisualSettings( sf::Vector2f& cellDimensions, sf::Vector2i& uPos );
 	};
 }

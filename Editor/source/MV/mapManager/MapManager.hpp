@@ -35,7 +35,7 @@ namespace mv
 	public:
 		static MapManager& getInstance();
 
-		static void createInstance(sf::Vector2i uWorldSize, const sf::Vector2f& celldimensions);
+		static void createInstance( sf::Vector2i uWorldSize, const sf::Vector2f& celldimensions );
 
 		//Returns world size in units
 		sf::Vector2i getUnitWorldSize();
@@ -47,33 +47,33 @@ namespace mv
 		std::vector<Cell> *getCellStorage();
 
 		//Construct whole world with default state
-		bool constructWholeWorld(int defaultState = 0);
+		bool constructWholeWorld( int defaultState = 0 );
 
 		//Uptades cells (to next state)
 		void updateCells();
 
 		//Sets default state
-		void setDefaultState(Cell&);
+		void setDefaultState( Cell& );
 
 		//Sets default state in each cell
 		void resetAllCells();
 
 		//Checks that object with given position is in map
-		bool isInMap(sf::Vector2i& unitPosition);
+		bool isInMap( sf::Vector2i& unitPosition );
 
 		//Checks that object with given position is in map
-		bool isInMap(unsigned int i, unsigned int j);
+		bool isInMap( unsigned int i, unsigned int j );
 
 		virtual void tick() override;
-	
+
 	protected:
 	private:
-		void createWorld(int defaultStateNumber);
+		void createWorld( int defaultStateNumber );
 
-		MapManager(sf::Vector2i uWorldSize, const sf::Vector2f& celldimensions);
+		MapManager( sf::Vector2i uWorldSize, const sf::Vector2f& celldimensions );
 		MapManager() = delete;  // Not Implemented
-		MapManager(MapManager const& copy) = delete;            // Not Implemented
-		MapManager& operator=(MapManager const& copy) = delete; // Not Implemented
+		MapManager( MapManager const& copy ) = delete;            // Not Implemented
+		MapManager& operator=( MapManager const& copy ) = delete; // Not Implemented
 
 		void rotateCell();
 	};

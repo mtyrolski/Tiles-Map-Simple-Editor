@@ -19,7 +19,7 @@ namespace mv
 	}
 
 	FlagObject::FlagObject()
-		:visible(true),lastClick(clock())
+		:visibleFlag( true ), lastClickTimePoint( clock() )
 	{
 		inputManager.addKeyToCheck( sf::Keyboard::V, []() { mv::FlagObject::getInstance().changeVisible(); } );
 	}
@@ -31,35 +31,34 @@ namespace mv
 
 	void FlagObject::updateType( int state )
 	{
-		object.setTextureRect( sf::IntRect(state*object.getGlobalBounds().width,0,object.getGlobalBounds().width,object.getGlobalBounds().height) );
+		object.setTextureRect( sf::IntRect( state*object.getGlobalBounds().width, 0, object.getGlobalBounds().width, object.getGlobalBounds().height ) );
 	}
 
-	void FlagObject::updateTexture( sf::Texture & texture, TYPE objectType )
+	void FlagObject::updateTexture( sf::Texture & texture )
 	{
 		object.setTexture( texture );
-		object.setTextureRect( sf::IntRect( 0,0,texture.getSize().y,texture.getSize().y ) );
-		type = objectType;
+		object.setTextureRect( sf::IntRect( 0, 0, texture.getSize().y, texture.getSize().y ) );
 		object.setOrigin( object.getGlobalBounds().width / 2.f, object.getGlobalBounds().height / 2.f );
 	}
 
 	void FlagObject::changeVisible()
 	{
-		if ( (clock() - lastClick) / CLOCKS_PER_SEC > constants::mouse::FREQUENCY )
+		if ( (clock() - lastClickTimePoint) / CLOCKS_PER_SEC > constants::mouse::FREQUENCY )
 		{
-			visible = !visible;
-			lastClick = clock();
+			visibleFlag = !visibleFlag;
+			lastClickTimePoint = clock();
 		}
 	}
 
 	void FlagObject::draw( sf::RenderTarget & target, sf::RenderStates states ) const
 	{
-		if ( visible )
+		if ( visibleFlag )
 		{
 			target.draw( object, states );
 		}
-			
+
 	}
 }
-	
+
 
 

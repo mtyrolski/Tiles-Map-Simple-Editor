@@ -2,11 +2,11 @@
 #include <iostream>
 namespace mv
 {
-	bool SoundObject::EmplaceSound(const std::string & name )
+	bool SoundObject::EmplaceSound( const std::string & name )
 	{
 		if ( sounds.find( name ) != sounds.end() )
 		{
-			Logger::Log( constants::error::soundObject::ALREADY_EXIST, Logger::STREAM::CONSOLE, Logger::TYPE::WARNING);
+			Logger::Log( constants::error::soundObject::ALREADY_EXIST, Logger::STREAM::CONSOLE, Logger::TYPE::WARNING );
 			return false;
 		}
 
@@ -18,29 +18,30 @@ namespace mv
 
 		sf::Sound sound;
 		soundSource.push_back( std::pair<sf::Sound, sf::SoundBuffer>( sound, soundBuffer ) );
-		soundSource.back().first.setBuffer(soundSource.back().second);
-		sounds.emplace(std::pair<std::string,int>(name, sounds.size()));
+		soundSource.back().first.setBuffer( soundSource.back().second );
+		sounds.emplace( std::pair<std::string, int>( name, sounds.size() ) );
 		return true;
 	}
 
-	int8_t SoundObject::GetNumberOfSound(const std::string & name )
+	int8_t SoundObject::GetNumberOfSound( const std::string & name )
 	{
 		auto itr = sounds.find( name );
 
 		if ( itr == sounds.end() )
 		{
-			Logger::Log( constants::error::soundObject::DOES_NOT_EXIST_IN_SYSTEM, Logger::STREAM::CONSOLE, Logger::TYPE::WARNING);
+			Logger::Log( constants::error::soundObject::DOES_NOT_EXIST_IN_SYSTEM, Logger::STREAM::CONSOLE, Logger::TYPE::WARNING );
 			return -1;
-		} else return itr->second;
+		}
+		else return itr->second;
 	}
 
-	bool SoundObject::EraseSound(const std::string & name )
+	bool SoundObject::EraseSound( const std::string & name )
 	{
 		auto soundIterator = sounds.find( name );
 
 		if ( soundIterator == sounds.end() )
 		{
-			Logger::Log(constants::error::soundObject::DOES_NOT_EXIST_IN_SYSTEM, Logger::STREAM::CONSOLE, Logger::TYPE::WARNING);
+			Logger::Log( constants::error::soundObject::DOES_NOT_EXIST_IN_SYSTEM, Logger::STREAM::CONSOLE, Logger::TYPE::WARNING );
 			return false;
 		}
 
@@ -55,17 +56,17 @@ namespace mv
 		return true;
 	}
 
-	bool SoundObject::PlaySound(const std::string & name )
+	bool SoundObject::PlaySound( const std::string & name )
 	{
-		if (!IsSoundExist(name))
+		if ( !IsSoundExist( name ) )
 		{
-			Logger::Log(constants::error::soundObject::DOES_NOT_EXIST_IN_SYSTEM, Logger::STREAM::CONSOLE, Logger::TYPE::WARNING);
+			Logger::Log( constants::error::soundObject::DOES_NOT_EXIST_IN_SYSTEM, Logger::STREAM::CONSOLE, Logger::TYPE::WARNING );
 			return false;
 		}
 
-		for (auto&var : sounds)
+		for ( auto&var : sounds )
 		{
-			std::cout << var.first <<" "<<var.second<< std::endl;
+			std::cout << var.first << " " << var.second << std::endl;
 		}
 		soundSource[sounds[name]].first.play();
 		return true;

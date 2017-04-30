@@ -30,13 +30,13 @@ namespace mv
 
 		int getAmmountOfTypes();
 
-		bool isTypeExist(int number);
+		bool isTypeExist( int number );
 
 		mv::Cache<sf::Texture>& getAtlasCache();
 	protected:
 	private:
 		TypesManager();
-		TypesManager(TypesManager const& copy) = delete;            // Not Implemented
-		TypesManager& operator=(TypesManager const& copy) = delete; // Not Implemented
+		TypesManager( TypesManager const& copy ) = delete;            // Not Implemented
+		TypesManager& operator=( TypesManager const& copy ) = delete; // Not Implemented
 	};
 }

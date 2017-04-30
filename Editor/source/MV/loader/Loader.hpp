@@ -40,7 +40,7 @@ namespace mv
 	protected:
 	private:
 		Loader() = default;
-		Loader(Loader const& copy) = delete;            // Not Implemented
-		Loader& operator=(Loader const& copy) = delete; // Not Implemented
+		Loader( Loader const& copy ) = delete;            // Not Implemented
+		Loader& operator=( Loader const& copy ) = delete; // Not Implemented
 	};
 }

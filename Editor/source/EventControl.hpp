@@ -14,7 +14,7 @@
 		do sth...
 		break;
 	}
-			    ===---===
+				===---===
 */
 
 namespace mv
@@ -29,14 +29,14 @@ namespace mv
 		static EventControl *instance;
 		/* ===Methods=== */
 	public:
-		void checkEvent(sf::Event &event);
+		void checkEvent( sf::Event &event );
 		static EventControl& getInstance();
-		static void createInstance(Scene *scene);
+		static void createInstance( Scene *scene );
 	protected:
 	private:
-		EventControl(Scene *scene);
+		EventControl( Scene *scene );
 		EventControl() = delete; // Not Implemented
-		EventControl(EventControl const& copy) = delete;            // Not Implemented
-		EventControl& operator=(EventControl const& copy) = delete; // Not Implemented
+		EventControl( EventControl const& copy ) = delete;            // Not Implemented
+		EventControl& operator=( EventControl const& copy ) = delete; // Not Implemented
 	};
 }

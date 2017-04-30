@@ -31,7 +31,7 @@ namespace mv
 
 		//to checking border
 		sf::Vector2u tolerance;
- 
+
 		bool movingPermission;
 		mv::Cache<sf::Texture> mouseTexture;
 
@@ -47,18 +47,18 @@ namespace mv
 	public:
 		static Mouse& getInstance();
 
-		static void createInstance(const Mouse::TYPE& type = Mouse::TYPE::MV_DEFAULT, bool movingBorderPermission = false);
+		static void createInstance( const Mouse::TYPE& type = Mouse::TYPE::MV_DEFAULT, bool movingBorderPermission = false );
 
 		~Mouse();
 
-		void changeType(const Mouse::TYPE& type);
+		void changeType( const Mouse::TYPE& type );
 
-		void setBorderMovingMode(bool mode);
+		void setBorderMovingMode( bool mode );
 
-		void setTolerance(sf::Vector2u value);
-		void setTolerance(unsigned long value_x, unsigned long value_y);
+		void setTolerance( sf::Vector2u value );
+		void setTolerance( unsigned long value_x, unsigned long value_y );
 
-		void changeScale(float change);
+		void changeScale( float change );
 
 		void tick() override;
 
@@ -68,12 +68,12 @@ namespace mv
 
 	protected:
 	private:
-		Mouse(const Mouse::TYPE& type = Mouse::TYPE::MV_DEFAULT, bool movingBorderPermission = false);
+		Mouse( const Mouse::TYPE& type = Mouse::TYPE::MV_DEFAULT, bool movingBorderPermission = false );
 		Mouse() = delete;  // Not Implemented
-		Mouse(Mouse const& copy) = delete;            // Not Implemented
-		Mouse& operator=(Mouse const& copy) = delete; // Not Implemented
+		Mouse( Mouse const& copy ) = delete;            // Not Implemented
+		Mouse& operator=( Mouse const& copy ) = delete; // Not Implemented
 
-		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+		virtual void draw( sf::RenderTarget& target, sf::RenderStates states ) const;
 
 		void positionUpdate();
 		void checkBorders();

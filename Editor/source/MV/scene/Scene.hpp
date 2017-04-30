@@ -51,7 +51,7 @@ namespace mv
 	public:
 		static Scene& getInstance();
 
-		static void createInstance(const std::string& title = constants::defaults::UNNAMED, const sf::Vector2f& dimensions = constants::defaults::WINDOW_DIMENSIONS, float speed = 1.f);
+		static void createInstance( const std::string& title = constants::defaults::UNNAMED, const sf::Vector2f& dimensions = constants::defaults::WINDOW_DIMENSIONS, float speed = 1.f );
 
 		~Scene();
 
@@ -64,18 +64,18 @@ namespace mv
 		//Tell whether or not the window is open
 		bool isOpen() const;
 
-		void zoom(ZOOM_STATE state);
+		void zoom( ZOOM_STATE state );
 
-		void moveView(DIRECTION direction);
+		void moveView( DIRECTION direction );
 
 		//Draws given collection of T objects
 		//returns false if T doesn't inhert from sf::Drawable
 		template < typename T = typename std::enable_if< std::is_base_of<sf::Drawable, T>::value, T>::type>
-		bool drawCollection(std::vector<T> *collection);
+		bool drawCollection( std::vector<T> *collection );
 
 		float getMoveSpeed();
 
-		void setMoveSpeed(float value);
+		void setMoveSpeed( float value );
 
 		sf::RenderWindow *GetPointerToWindow();
 
@@ -87,18 +87,18 @@ namespace mv
 		void moveViewDown();
 	protected:
 	private:
-		Scene(const std::string& title = constants::defaults::UNNAMED, const sf::Vector2f& dimensions = constants::defaults::WINDOW_DIMENSIONS);
+		Scene( const std::string& title = constants::defaults::UNNAMED, const sf::Vector2f& dimensions = constants::defaults::WINDOW_DIMENSIONS );
 		Scene() = delete;  // Not Implemented
-		Scene(Scene const& copy) = delete;            // Not Implemented
-		Scene& operator=(Scene const& copy) = delete; // Not Implemented	
+		Scene( Scene const& copy ) = delete;            // Not Implemented
+		Scene& operator=( Scene const& copy ) = delete; // Not Implemented	
 	};
 
 
 	template<typename T>
-	inline bool Scene::drawCollection(std::vector<T>* collection)
+	inline bool Scene::drawCollection( std::vector<T>* collection )
 	{
-		for (auto&var : *collection)
-			window->draw(var);
+		for ( auto&var : *collection )
+			window->draw( var );
 
 		return true;
 	}

@@ -20,12 +20,12 @@ namespace mv
 		float liveTime;
 		/* ===Methods=== */
 	public:
-		Statement(const std::string& _text, float time, sf::Font &font, std::vector<Statement>& statements);
+		Statement( const std::string& _text, float time, sf::Font &font, std::vector<Statement>& statements );
 
 		bool isActive();
 	protected:
 	private:
-		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+		virtual void draw( sf::RenderTarget& target, sf::RenderStates states ) const;
 
 	};
 }

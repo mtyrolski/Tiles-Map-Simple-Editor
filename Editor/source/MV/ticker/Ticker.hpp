@@ -14,14 +14,14 @@ namespace mv
 		static std::vector<Ticker*> objects;
 		/* ===Methods=== */
 	public:
-		Ticker(Ticker* pointer);
+		Ticker( Ticker* pointer );
 		virtual ~Ticker();
 
 		virtual void tick() = 0;
 
 		static void tickLoop();
 
-		static void removePointer(Ticker* ptr);
+		static void removePointer( Ticker* ptr );
 	protected:
 	private:
 	};

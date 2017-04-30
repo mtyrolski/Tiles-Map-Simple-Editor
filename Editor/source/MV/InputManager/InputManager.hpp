@@ -23,9 +23,9 @@ namespace mv
 
 		void tick() override;
 
-		bool addKeyToCheck(sf::Keyboard::Key key, std::function<void()> function);
+		bool addKeyToCheck( sf::Keyboard::Key key, std::function<void()> function );
 
-		bool eraseKey(sf::Keyboard::Key key);
+		bool eraseKey( sf::Keyboard::Key key );
 	protected:
 	private:
 	};

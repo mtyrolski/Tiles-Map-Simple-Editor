@@ -34,12 +34,12 @@ namespace mv
 
 		void tick() override;
 
-		void addStatement(const std::string& _text, float time);
+		void addStatement( const std::string& _text, float time );
 	protected:
 	private:
 		StatementSystem();
 		~StatementSystem();
-		StatementSystem(StatementSystem const& copy) = delete;            // Not Implemented
-		StatementSystem& operator=(StatementSystem const& copy) = delete; // Not Implemented
+		StatementSystem( StatementSystem const& copy ) = delete;            // Not Implemented
+		StatementSystem& operator=( StatementSystem const& copy ) = delete; // Not Implemented
 	};
 }

@@ -17,21 +17,18 @@ namespace mv
 	{
 		/* ===Objects=== */
 	public:
-
-		enum class TYPE
-		{
-			CELL,
-			ORDINARY
-		};
-
 	protected:
 	private:
+
 		sf::Sprite object;
-		TYPE type;
+
 		InputManager inputManager;
-		bool visible;
+
+		bool visibleFlag;
+
 		static FlagObject *instance;
-		float lastClick;
+
+		float lastClickTimePoint;
 
 		/* ===Methods=== */
 	public:
@@ -41,12 +38,7 @@ namespace mv
 
 		void updatePosition( const sf::Vector2f& position );
 		void updateType( int state );
-		void updateTexture( sf::Texture& texture, TYPE type );
-
-		TYPE getType()
-		{
-			return type;
-		}
+		void updateTexture( sf::Texture& texture );
 
 		void changeVisible();
 

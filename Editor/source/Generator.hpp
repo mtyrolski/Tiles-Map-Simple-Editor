@@ -19,11 +19,11 @@ private:
 	MODE generatorMode;
 	/* ===Methods=== */
 public:
-	Generator(char rotateMode);
+	Generator( char rotateMode );
 
-	void generate(const std::string& path);
+	void generate( const std::string& path );
 protected:
 private:
-	void generateWithRotation(const std::string & path);
-	void generateWithoutRotation(const std::string & path);
+	void generateWithRotation( const std::string & path );
+	void generateWithoutRotation( const std::string & path );
 };
